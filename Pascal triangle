@@ -1,0 +1,42 @@
+# var 2 - optimezid function for binom calculation, pascal function to print inputted line
+# var 1 full triangle iteration with print all triangle
+li = [1]
+x = int(input())
+print(*li)
+for i in range(x-1):
+    for j in range(len(li)-1):
+        li[j] = li[j]+li[j+1]
+    li.insert(0, 1)
+    print(*li)
+
+# var 2
+# def binom(n,k):
+#     if k == 0:
+#         return 1
+#     if k == 1:
+#         return n
+#     if k > n/2:
+#         k = n - k
+#         if k in [0,1]:
+#             return [1,n][k]
+#     num, denum  = 1, 1
+#     for i in range(1, k+1):
+#         num *= n-k+i
+#         denum *= i
+#     return int(num /denum)
+#
+# def pascal(x):
+#     lane = []
+#     if x % 2 != 0:
+#         for _ in range(int((x+1)/2)):
+#             lane.append(binom(x,_))
+#         lane.extend(lane[-1::-1])
+#     else:
+#         for _ in range(int(x/2+1)):
+#             lane.append(binom(x, _))
+#         lane.extend(lane[-2::-1])
+#     return lane
+#
+# print(pascal(int(input())))
+
+
