@@ -1,0 +1,181 @@
+# # reversed matrix
+# n = 3
+# a = [[1, 2, 3],
+#      [4, 5, 6],
+#      [7, 8, 9]]
+#
+# for i in range(n):
+#     for j in range(n):
+#         print(a[n - i - 1][n - j - 1], end=' ')
+#     print()
+#
+# #  main and submain diagonal
+# n = 5
+# a = [[19, 21, 33, 78, 99],
+#      [41, 53, 66, 98, 76],
+#      [79, 80, 90, 60, 20],
+#      [33, 11, 45, 67, 90],
+#      [45, 67, 12, 98, 23]]
+#
+# maximum = -1
+# minimum = 100
+#
+# for i in range(n):
+#     if a[i][i] > maximum:
+#         maximum = a[i][i]
+#     if a[i][n - i - 1] < minimum:
+#         minimum = a[i][n - i - 1]
+# print(minimum + maximum)
+
+# 4-1-1 matrix print
+# n,m, matrix = int(input()), int(input()), []
+# for i in range(n):
+#     row = []
+#     for j in range(m):
+#        row.append(input())
+#     matrix.append(row)
+# for _ in range(n):
+#     print(*matrix[_])
+# print()
+# for i in range(m):
+#     for j in range(n):
+#         print(matrix[j][i], end = ' ')
+#     print()
+
+# var 2
+# n, m = int(input()), int(input())
+# arr = [[input() for _ in range(m)] for _ in range(n)]
+# for row in arr:
+#     print(*row)
+# print()
+# for i in range(m):
+#     for j in range(n):
+#         print(arr[j][i], end=' ')
+#     print()
+
+# # lazy smartasss
+# n = int(input())
+# m = int(input())
+#
+# [print(*[input() for i in range(m)]) for i in range(n)]
+
+# 4-1-3 matrix trace
+# x, sum = int(input()), 0
+# for i in range(x):
+#     sum += [int(x) for x in input().split()][i]
+# print(sum)
+#
+# res = 0
+# for i in range(int(input())):
+#     res += int(input().split()[i])
+# print(res)
+
+# 4-1-4 number of elements > avr in row
+# n, = int(input()),
+# target = [0 for i in range(n)]
+# for _ in range(n):
+#     arr = [int(x) for x in input().split()]
+#     avg = sum(arr)/n
+#     for elem in arr:
+#         if elem > avg:
+#             target[_] += 1
+# for i in target:
+#     print(i)
+
+# for _ in range(int(input())):
+#     lst = list(map(int, input().split()))
+#     avg = sum(lst) / len(lst)
+#     print(sum(i > avg for i in lst))  - генератор списка из 0 и 1
+
+# 4-1-5 max elem in 2nd quarter of matrix
+# x, target = int(input()), -10000000
+# for _ in range(x):
+#      elem = max([int(x) for x in input().split()][:_+1])
+#      if elem > target:
+#          target = elem
+# print(target)
+#
+# # advanced
+# print(max(e for i in range(int(input())) for e in map(int, input().split()[:i + 1])))
+
+# 4-1-7 matrix slice max elem
+# n = int(input())
+# matrix = [list(map(int, input().split())) for i in range(n)]
+# target = matrix[0][0]
+# for i in range(n):
+#     for j in range(n):
+#         if (i<=j and i>=n-1-j) or (i>=j and i<=n-1-j):
+#             if matrix[i][j] > target:
+#                 target = matrix[i][j]
+# print(target)
+
+#  var 2
+# n = int(input())
+# matrix = [[int(i) for i in input().split()] for _ in range(n)]
+# print(max([matrix[i][j] for i in range(n) for j in range(n) if (i>=j and i<=n-1-j) or (i<=j and i>=n-1-j)]))
+#
+#
+# # var 3
+# n = int(input())
+# a = [[*map(int, input().split())] for _ in range(n)]
+# print(max(a[i][j] for i in range(n) for j in range(n) if j <= i <= n - j - 1 or j >= i >= n - j - 1))
+#
+# # var 4 advanced
+# n = int(input())
+# m = [list(map(int, input().split())) for _ in range(n)]
+# print(max(max(m[i][j], m[i][~j], m[~i][j], m[~i][~j]) for i in range(n // 2 + 1) for j in range(i + 1)))
+
+
+# m, n = [[1,2,3,4], [1,2,3,4], [1,2,3,4], [1,2,3,4]], 4
+
+# 4-1-8 sum of matrix parts, excliding diag
+# n = int(input())
+# m = [list(map(int, input().split())) for _ in range(n)]
+# sums = [0,0,0,0]
+# for i in range(n):
+#     for j in range(n):
+#         sums[(i<j and i<n-1-j)*0 or (i>j and i<n-1-j) or (i<j and i>n-1-j)+1 or (i>j and i>n-1-j)+2] += m[i][j]
+# print(sums)
+
+# m, n = [[1,2,3,4], [5,6,7,8], [3,4,5,6], [1,2,3,4]], 4
+# n = int(input())
+# m = [list(map(int, input().split())) for _ in range(n)]
+# sums, vars = [0,0,0,0,0], [0,"Верхняя", "Правая", "Нижняя", "Левая"]
+# for i in range(n):
+#     for j in range(n):
+#         if i !=j and i+j+1 !=n:
+#             sums[(i<j and i<n-1-j) or (i<j and i>n-1-j)*2 or (i>j and i>n-1-j)*3 or (i>j and i<n-1-j)*4] += m[i][j]
+# for _ in range(1,5):
+#     print(f'{vars[_]} четверть: {sums[_]}')
+
+# 4-1-8 matrix rep ljust(3)
+# n,m = int(input()), int(input())
+# for i in range(n):
+#     for j in range(m):
+#         print(str(i*j).ljust(3), end = ' ')
+#         # print(f'{i * j:<3}', end="")
+#     print()
+#
+# [[print(*[str(i*j).ljust(3) for j in range(m)]) for i in range(n)]]
+
+
+# 4-1-9 coordinates of max elem in matrix
+# n, x = int(input()), int(input())
+# m = [list(map(int, input().split())) for _ in range(n)]
+# cord = max(m, key = max)
+# cord2 = max(cord)
+# print(m.index(cord), cord.index(cord2))
+
+# var2 wtf magic
+# _, m, *lst = map(int, open(0).read().split())
+# print(*divmod(max(enumerate(lst), key=lambda x: x[1])[0], m))
+
+# 4-1-10 change of columns of matrix
+n, x = int(input()), int(input())
+m = [list(map(int, input().split())) for _ in range(n)]
+cords = list(map(int, input().split()))
+for i in range(n):
+    m[i][cords[1]], m[i][cords[0]] = m[i][cords[0]],m[i][cords[1]]
+for i in range(n):
+    print(*m[i])
+
