@@ -1,0 +1,63 @@
+import math
+#1-1
+# a,b = int(input()), int(input())
+# print(a+b,a-b,a*b,a/b,a//b,a % b,(a**10 + b**10)**0.5, sep='\n')
+
+#1-2 определение Индекса массы тела
+# imt = float(input())/(float(input())**2)
+# print('Оптимальная масса') if 18.5 <= imt <= 25 else print('Недостаточная масса') if imt < 18.5 else\
+#     print('Избыточная масса')
+#1-2 advansed:
+# i = float(input()) / float(input()) ** 2
+# print([['Оптималь', 'Недостаточ'][i < 18.5], 'Избыточ'][ i > 25] + 'ная масса')
+#
+# imt = float(input())/float(input())**2
+# print(('Оптимальная', 'Избыточная', 'Недостаточная')[(imt>25)-(imt<18.5)], 'масса')
+
+#1-3 цена строки с стоимостью символа 60 коп
+# x = len(input())*60
+# print(f'{x//100} р. {x%100} коп.')
+#1-3 advansed
+#print(*divmod(len(input()) * 60, 100), sep='р. ', end='коп.')
+
+#1-4
+# print(len(input().split()))
+#
+# 1-5 Китайский календарь
+# calendar = ["Обезьяна", "Петух", "Собака", "Свинья", "Крыса", "Бык", "Тигр", "Заяц", "Дракон", "Змея", "Лошадь", "Овца",]
+# print(calendar[int(input()) % 12])
+
+#1-6 дано 6х или 5х число, переставить последние 5 чисел, убрать лишние 0
+# z = input()
+# print(z[0] + z[:0:-1]) if len(z)==6 else print(int(z[::-1]))
+# another
+# s = input()
+# print(int(s[:-5] + s[-5:][::-1]))
+
+#1-7 вставка запятой по американскому стандарту
+# print('{:,}'.format(int(input())))
+# print(f"{int(input()):,}")
+# #advansed
+# a = input()[: : -1]
+# print(",".join([a[ i: i + 3] for i in range(0, len(a), 3)])[ : : -1])
+#
+# num = input()
+# for idx in range(len(num) - 3, 0, -3):
+#     num = num[:idx] + ',' + num[idx:]
+# print(num)
+
+# #задача Джозефа-Флавия
+# каждый i-ый элемент   i = (i+(shag)-1)%(len(sp))
+
+# sp = [i for i in range(1,int(input())+1)]
+# i = 0
+# shag = 2
+# while len(sp) > 1:
+#     i = (i+shag-1)% len(sp)
+#     print(i)
+#     sp.remove(sp[i])
+#     print(sp)
+#
+
+
+
