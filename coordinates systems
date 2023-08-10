@@ -1,0 +1,135 @@
+# #2-1 coordinate system on points (x-y)
+# cord = [0,0,0,0]
+# f = int(input())
+# for i in range(f):
+#     x, y = map(int, input().split())
+#     if (x and y) != 0:
+#         rez = int("0" * (x > 0 and y > 0) or
+#                   "2" * (x < 0 and y < 0) or
+#                   "3" * (x > 0 and y < 0) or
+#                   "1" * (x < 0 and y > 0))
+#         cord[rez] += 1
+# print(f'''Первая четверть: {cord[0]}
+# Вторая четверть: {cord[1]}
+# Третья четверть: {cord[2]}
+# Четвертая четверть: {cord[3]}''')
+#
+# #alternative output:
+# names = ['Первая четверть:', 'Вторая четверть:',
+#          'Третья четверть:', 'Четвертая четверть:']
+# for i in range(4):
+#     print(names[i], cord[i])
+#
+# #advanced:
+# c = 4 * [0] + [int(input())]
+# for _ in range(c[4]):
+#     x, y = map(int, input().split())
+#     c[x < 0 if y > 0 else 2 + (x > 0)] += not 0 in [x, y]
+# [print(f"{['Первая', 'Вторая', 'Третья', 'Четвертая'][i]} четверть: {c[i]}") for i in range(4)]
+
+
+# #2-2 count elements whey i+1 > i in list
+# data = [int(x) for x in input().split()]
+# count = 0
+# for i in range(len(data)-1):
+#     if data[i+1] > data[i]:
+#         count += 1
+# print(count)
+
+
+#2-3 reverse elements in list i i+1 except last one if list length is odd
+# data = [int(x) for x in input().split()]
+# for i in range(0,len(data)-1,2):
+#     data[i], data[i+1] = data[i+1], data[i]
+# print(*data)
+
+#2-4 move last element of list to 1st position
+# data = [int(x) for x in input().split()]
+# print(*[data[-1]] + data[:-1])
+
+# 2-5 count unique elements in list
+# from collections import Counter
+# x = C
+# print(len(Counter(x).keys()))
+# # variant 2
+# x = []
+# for _ in input().split():
+#     if _ not in x:
+#         x.append(_)
+# print(len(x))
+# # variant 3
+# print(len(set(input().split())))
+
+#2-6 define yes/no multiply result of 2 numbers from list
+# x = int(input())
+# data = [int(input()) for i in range(x)]
+# result, iterator = int(input()), 0
+# for i in data[:]:
+#     data.remove(i)
+#     if (result // i) in data:
+#         print("ДА")
+#         iterator = 1
+#         break
+# print("НЕТ" * (iterator == 0))
+
+#2-7 skissors-rock-paper game, Timur first move
+# tim, rus = input(), input()
+# print(['Руслан','Тимур'][tim[0]+rus[0] in ['кн','нб','бк']] if tim != rus else 'ничья')
+# # alternative with index (in list elem i beats i-1 and loses to i+1)
+# x, y = input(), input()
+# var = ['камень', 'ножницы', 'бумага']
+# ans = ['ничья', 'Руслан', 'Тимур']
+# print(ans[var.index(x) - var.index(y)])
+
+# #2-8 sk-rock-paper+lizard+ spol
+# tim, rus = input(), input()
+# game = ["камень", "ящерица", "Спок", "ножницы", "бумага"]
+# dist = (game.index(tim) - game.index(rus)) % len(game)
+# print(["ничья","Тимур","Руслан"][dist and dist % 2 +1])
+#
+# #  var 2
+# d = {'ножницы': 0, 'бумага': 1, 'камень': 2, 'ящерица': 3, 'Спок': 4}
+# t, r = (d[input()] for _ in 'tr')
+# print('ничья' if t == r else 'Тимур' if (r - t) % 5 % 2 else 'Руслан')
+
+# 2-9 coin flip count var 1
+# print(len(max(input().split('О'))))
+# var 2 (counting of max PPP.. in string)
+# x, t = input(), 0
+# while 'Р'*(t+1) in x:
+#     t +=1
+# print(t)
+
+# #2-10 find string in big string (anton)
+# test = '222anton456'
+# x, number, virus,  = int(input()), [], 'anton',
+# for i in range(x):
+#     fridge, start = input(), 0
+#     for j in virus:
+#         if fridge.find(j, start) != -1:
+#             start = fridge.find(j, start)
+#             flag = 1
+#         else:
+#             flag = 0
+#             break
+#     if flag !=0:
+#         number.append(i+1)
+# print(*number)
+# # var 2
+# for i in range(int(input())):
+#     s, virus, x  = input(), 'anton', 0
+#     for sym in s:
+#         if sym == virus[x]:
+#             x += 1
+#             if x == 5:
+#                 print(i + 1, end=' ')
+#                 break
+
+#2-11 remove string by order
+# a = ord('а')
+# area = ''.join([chr(i) for i in range(a,a+32)])
+# x = input()+" запретил букву"
+# for i in area:
+#     if i in x:
+#         print(x, i)
+#         x = x.replace(i, "", x.count(i)).replace("  ", " ").strip()
