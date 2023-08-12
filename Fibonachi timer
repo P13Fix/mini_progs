@@ -1,0 +1,22 @@
+import time
+
+def timer(func):
+    def wrapper(args_for_func):
+        start = time.time()
+        func(args_for_func)
+        end = time.time()
+        print(f"func takes {end-start} seconds")
+    return wrapper
+
+@timer
+def fibonacci(n):
+    if n in (1, 2):
+        return 1
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+@timer
+def list(x):
+    return print([i*i for i in range(x)])
+
+
+list(90)
