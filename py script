@@ -1,0 +1,48 @@
+# This is a sample Python script.
+
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+
+environ = {'QUERY_STRING':'a=1&b=2&c=3'}
+def app(environ):
+    body = [bytes(i + '\n', 'ascii') for i in environ['QUERY_STRING'].split('&')]
+    return body
+
+print(app(environ))
+
+# return [item + '\n' for item in qs]
+# .encode('utf-8')
+
+# def app(environ, start_response):
+#     start_response('200 OK', [('Content-Type', 'text/plain')])
+#     qs = environ['QUERY_STRING'].split('&')
+#     return [item + '\n' for item in qs]
+
+# "\n".join(environ.get('QUERY_STRING').split("&"))
+
+bind = "0.0.0.0:8080"
+
+
+def application(env, start_response):
+    start_response("200 OK", [("Content-Type", "text/plain")])
+    query = env["QUERY_STRING"].split("&")
+    query_list = "\n".join(query)
+
+    return [query_list.encode("utf-8")]
+
+init.sh
+sudo ln -sf /home/box/web/etc/nginx.conf /etc/nginx/sites-enabled/default
+sudo /etc/init.d/nginx restart
+gunicorn -c hello.py hello:application
+
+
+nginx.conf
+server {
+
+    listen 80 default;
+
+location /hello {
+    proxy_pass http://localhost:8080;
+}
+
+}
