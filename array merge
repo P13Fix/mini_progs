@@ -1,0 +1,23 @@
+def merge_arrays(a, b):
+    # "c" will contain the result of merging arrays "a" and "b"
+    c = []
+    while a or b:
+        if ((a and b) and (a[0] < b[0])) or (a and not b):  # if not b or a and a[0] < b[0]:
+            # removing the first element from "a" and adding it to "c"
+            c.append(a[0])
+            a.pop(0)
+        else:
+            # removing the first element from "b" and adding it to "c"
+            c.append(b[0])
+            b.pop(0)
+
+    return c
+
+a = [1, 2, 3]
+b =  [2, 3, 4, 4]
+
+print(merge_arrays(a, b))
+
+
+#  def wrong_password(password):
+#     return (password == "" or (not password and real_password)) or password != real_password
