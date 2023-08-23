@@ -1,0 +1,6 @@
+import datetime
+a =  [int(i) for i in (input().split())]
+x = datetime.date(a[0],a[1],a[2])
+z = datetime.timedelta(int(input()))
+time_res = x+z
+print(time_res.year,time_res.month,time_res.day)
