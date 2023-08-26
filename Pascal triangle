@@ -9,7 +9,7 @@ for i in range(x-1):
     li.insert(0, 1)
     print(*li)
 
-# var 2
+# var 2 - more plain
 # def binom(n,k):
 #     if k == 0:
 #         return 1
